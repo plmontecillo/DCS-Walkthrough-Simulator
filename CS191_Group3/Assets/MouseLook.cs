@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public float mouseSensivity = 100f;
+
     public Transform playerBody;
     float xRotation = 0f;
-    float yRotation = 0f;
+
+    // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -17,22 +19,17 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Get Mouse Inputs (Mouse Movement)
         float mouseX = Input.GetAxis("Mouse X") * mouseSensivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensivity * Time.deltaTime;
 
+        // Restrict Up/Down Rotation to 180 Degrees Max
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-
-        yRotation -= mouseX;
-        yRotation = Mathf.Clamp(-90f, 0f, yRotation);
-
-        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+        // Rotate the Camera (if up/down)
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // Rotate the Player Body (if left/right)
         playerBody.Rotate(Vector3.up * mouseX);
-
-
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
-        playerBody.Rotate(Vector3.left * mouseY);
-        playerBody.Rotate(Vector3.right * mouseY);
     }
 }
