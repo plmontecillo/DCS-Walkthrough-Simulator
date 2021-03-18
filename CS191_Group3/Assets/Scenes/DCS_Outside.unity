@@ -321,6 +321,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  currentScene: 
+  pos: {x: 0, y: 0, z: 0}
 --- !u!143 &710986766
 CharacterController:
   m_ObjectHideFlags: 0
@@ -556,6 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enterText: {fileID: 2135639782}
   levelToLoad: DCS_Inside
+  currentScene: DCS_Outside
 --- !u!65 &1579991285
 BoxCollider:
   m_ObjectHideFlags: 0
