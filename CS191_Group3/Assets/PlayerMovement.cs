@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
+    public string prevScene;
     public string currentScene;
     public Vector3 pos;
 
@@ -31,15 +32,23 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey(currentScene + "x"))
+        //set initial position (NOT WORKING)
+        if (GameManager.Instance.prevScene == "DCS_Inside" && currentScene == "DCS_Outside")
         {
-            pos = new Vector3(PlayerPrefs.GetFloat(currentScene + "x"),
-            PlayerPrefs.GetFloat(currentScene + "y"),
-            PlayerPrefs.GetFloat(currentScene + "z"));
-
-            transform.position = pos;
-            Debug.Log(transform.position);
+            StartCoroutine(DelayMovePlayer(new Vector3(145.3551f, 27.35716f, 153.4451f)));
         }
+        else if (GameManager.Instance.prevScene == "DCS_Outside" && currentScene == "DCS_Inside")
+        {
+            StartCoroutine(DelayMovePlayer(new Vector3(-4.512936f, 1.980001f, -17.82328f)));                
+        }
+        Debug.Log(transform.position);
+    }
+
+    private IEnumerator DelayMovePlayer(Vector3 pos)
+    {
+        yield return null;
+        transform.position = pos;
+        Debug.Log("Singleton read.");
     }
 
 

@@ -11,9 +11,6 @@ public class ChangeScene : MonoBehaviour
     public string levelToLoad;
     //name of the current scene
     public string currentScene;
-    //player game object
-    private GameObject playerObj = null;
-
 
     void Awake()
     {
@@ -38,24 +35,12 @@ public class ChangeScene : MonoBehaviour
             if(Input.GetButton("Use"))
             {
 
-                //Get player's position
-                if (playerObj == null)
+                if(GameManager.Instance != null)
                 {
-                    playerObj = GameObject.FindGameObjectWithTag("Player");
+                    GameManager.Instance.prevScene = currentScene;
                 }
-                Vector3 playerPosition = playerObj.transform.position;
-                //Save player's position
-                PlayerPrefs.SetFloat(currentScene + "x", playerPosition.x);
-                PlayerPrefs.SetFloat(currentScene + "y", playerPosition.y);
-                PlayerPrefs.SetFloat(currentScene + "z", playerPosition.z);
-                PlayerPrefs.Save();
-
-                Debug.Log("X: " + PlayerPrefs.GetFloat(currentScene + "x") + "Y: " + PlayerPrefs.GetFloat(currentScene + "y") + "Z: " + PlayerPrefs.GetFloat(currentScene + "z"));
-
                 //If "E" is pressed, change scene
                 SceneManager.LoadScene(levelToLoad);
-
-                Debug.Log("New Scene is loaded");
             }
         }
     }
