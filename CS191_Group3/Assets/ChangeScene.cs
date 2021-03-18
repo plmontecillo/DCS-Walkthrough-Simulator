@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//Programmer: Lyzer Merck B. Bautista
+//This script is used by the trigger box collider that handles changing scenes when the player collides on the collider and "E" button is pressed.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +17,7 @@ public class ChangeScene : MonoBehaviour
 
     void Awake()
     {
+        //get the name of the current scene
         currentScene = SceneManager.GetActiveScene().name;
     }
     // Start is called before the first frame update
@@ -32,14 +36,17 @@ public class ChangeScene : MonoBehaviour
         {
             //show 2D text
             enterText.SetActive(true);
+            //if "E" is pressed
             if(Input.GetButton("Use"))
             {
-
+                //If Game Manager is already initialized
                 if(GameManager.Instance != null)
                 {
+                    //update the prevScene
+                    //prevScene is used to know the position of the player in the new scene
                     GameManager.Instance.prevScene = currentScene;
                 }
-                //If "E" is pressed, change scene
+                //change scene
                 SceneManager.LoadScene(levelToLoad);
             }
         }

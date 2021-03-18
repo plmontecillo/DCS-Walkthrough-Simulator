@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//Programmer: Lyzer Merck B. Bautista
+//This script is responsible for the following:
+//      (1): Initial position of the player when a scene is newly loaded
+//      (2): Views of the Player depending on mouse inputs
+//      (3): Movement of the Player(walk and jump) based on WASD and SPACE
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +13,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //accepts the controller of the Player Game Object
     public CharacterController controller;
 
     //Velocity Variables
@@ -20,34 +28,45 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
+    // Variables for initial position
     public string prevScene;
     public string currentScene;
     public Vector3 pos;
 
     void Awake()
     {
+        //get the name of the current scene
         currentScene = SceneManager.GetActiveScene().name;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //set initial position (NOT WORKING)
+        //Coroutine is used since transforming the position of the Player Game Object on Start() does not work since it is executed before the first frame is rendered.
+        //We need to delay the transform.position
+
+        //From inside to outside
         if (GameManager.Instance.prevScene == "DCS_Inside" && currentScene == "DCS_Outside")
         {
+            //set the corresponding position (HARD CODED)
             StartCoroutine(DelayMovePlayer(new Vector3(145.3551f, 27.35716f, 153.4451f)));
         }
+        //From outside to inside
         else if (GameManager.Instance.prevScene == "DCS_Outside" && currentScene == "DCS_Inside")
         {
+            //set the corresponding position (HARD CODED)
             StartCoroutine(DelayMovePlayer(new Vector3(-4.512936f, 1.980001f, -17.82328f)));                
         }
+        //for debugging
         Debug.Log(transform.position);
     }
 
+    //function to delay transform.position
     private IEnumerator DelayMovePlayer(Vector3 pos)
     {
         yield return null;
         transform.position = pos;
+        //For debugging
         Debug.Log("Singleton read.");
     }
 
