@@ -48,24 +48,28 @@ public class PlayerMovement : MonoBehaviour
         //From inside to outside
         if (GameManager.Instance.prevScene == "DCS_Inside" && currentScene == "DCS_Outside")
         {
-            //set the corresponding position (HARD CODED)
-            StartCoroutine(DelayMovePlayer(new Vector3(145.3551f, 27.35716f, 153.4451f)));
+            //set the corresponding position and rotation (HARD CODED)
+            StartCoroutine(DelayMovePlayer(new Vector3(124.054f, 26.9026f, 135.874f), new Vector3(0f,338.008f,0f)));
         }
         //From outside to inside
         else if (GameManager.Instance.prevScene == "DCS_Outside" && currentScene == "DCS_Inside")
         {
-            //set the corresponding position (HARD CODED)
-            StartCoroutine(DelayMovePlayer(new Vector3(-4.512936f, 1.980001f, -17.82328f)));                
+            //set the corresponding position and rotation (HARD CODED)
+            StartCoroutine(DelayMovePlayer(new Vector3(2.79572f, 0.32000f, -19.1289f), new Vector3(0f,178.509f,0f)));                
         }
         //for debugging
         Debug.Log(transform.position);
     }
 
     //function to delay transform.position
-    private IEnumerator DelayMovePlayer(Vector3 pos)
+    private IEnumerator DelayMovePlayer(Vector3 pos, Vector3 rot = default(Vector3))
     {
         yield return null;
         transform.position = pos;
+        if(rot != default(Vector3))
+        {
+            transform.rotation = Quaternion.Euler(rot);
+        }
         //For debugging
         Debug.Log("Singleton read.");
     }
