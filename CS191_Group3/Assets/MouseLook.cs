@@ -10,15 +10,35 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     float xRotation = 0f;
 
+    private bool disableControl;
+    
+    public void Awake()
+    {
+        var popup = FindObjectOfType<PopupHandler>();
+        if(popup)
+        {
+            popup.OnPopupChange += OnPopupAction;
+            Debug.Log("popup handler exists");
+        }
+    }
+
+    private void OnPopupAction(bool active)
+    {
+        disableControl = active;
+        Debug.Log(disableControl + "disablecontrol updated");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (disableControl) return;
+        //Debug.Log(disableControl);
         // Get Mouse Inputs (Mouse Movement)
         float mouseX = Input.GetAxis("Mouse X") * mouseSensivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensivity * Time.deltaTime;

@@ -33,10 +33,25 @@ public class PlayerMovement : MonoBehaviour
     public string currentScene;
     public Vector3 pos;
 
+    private bool disableControl;
+
     void Awake()
     {
         //get the name of the current scene
         currentScene = SceneManager.GetActiveScene().name;
+
+        var popup = FindObjectOfType<PopupHandler>();
+        if (popup)
+        {
+            popup.OnPopupChange += OnPopupAction;
+            Debug.Log("popup handler exists");
+        }
+    }
+
+    private void OnPopupAction(bool active)
+    {
+        disableControl = active;
+        Debug.Log(disableControl + "disablecontrol updated");
     }
 
     // Start is called before the first frame update
@@ -78,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (disableControl) return;
+
         //Check if Player touches the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
