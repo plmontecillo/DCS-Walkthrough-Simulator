@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         if (popup)
         {
             popup.OnPopupChange += OnPopupAction;
-            Debug.Log("popup handler exists");
         }
     }
 
@@ -85,8 +84,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(rot);
         }
-        //For debugging
-        Debug.Log("Singleton read.");
     }
 
 

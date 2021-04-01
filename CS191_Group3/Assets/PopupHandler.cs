@@ -12,8 +12,8 @@ public class PopupHandler : MonoBehaviour
     private Text message = null;
     private void Awake()
     {
-        //transform.DOScale(Vector3.zero, 0);
-        //Hide();
+        transform.DOScale(Vector3.zero, 0);
+        Hide();
         
     }
 
@@ -22,6 +22,7 @@ public class PopupHandler : MonoBehaviour
         OnPopupChange?.Invoke(true);
         this.message.text = message;
         transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void Hide()
@@ -29,5 +30,6 @@ public class PopupHandler : MonoBehaviour
         OnPopupChange?.Invoke(false);
         transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.OutCubic);
         Debug.Log("Hide called");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

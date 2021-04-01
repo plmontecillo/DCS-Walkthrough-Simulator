@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     //Previous Scene
     public string prevScene;
+
+    public string[] quests;
+    public int questIndex;
     void Awake()
     {
         //If not yet initialized,
@@ -22,6 +25,13 @@ public class GameManager : MonoBehaviour
             //refer to this and do not destroy
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            quests = new string[4];
+            quests[0] = "Introduction";
+            quests[1] = "ToLecHall";
+            quests[2] = "ToTLC";
+            quests[3] = "End";
+
+            questIndex = 0;
         }
         else
         {
