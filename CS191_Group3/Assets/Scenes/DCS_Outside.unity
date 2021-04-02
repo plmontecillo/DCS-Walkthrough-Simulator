@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prevScene: 
+  isPopupActive: 0
   quests: []
   questIndex: 0
 --- !u!4 &17537709
