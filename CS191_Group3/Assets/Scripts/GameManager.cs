@@ -34,11 +34,18 @@ public class GameManager : MonoBehaviour
 
             //Quests should be added here:
             //Format: quests[questIndex] = "Quest Title";
-            quests = new string[4];     //Make sure to change the array size
+            quests = new string[11];     //Make sure to change the array size
             quests[0] = "Introduction";
-            quests[1] = "ToLecHall";
-            quests[2] = "ToTLC";
-            quests[3] = "End";
+            quests[1] = "Entrance";
+            quests[2] = "LecHallOutside";
+            quests[3] = "LecHallInside";
+            quests[4] = "CLR2";
+            quests[5] = "ERDT";
+            quests[6] = "TL2";
+            quests[7] = "TLCOutside";
+            quests[8] = "TLCInside";
+            quests[9] = "SerialsOutside";
+            quests[10] = "SerialsInside";
 
             //Initially quest index is 0 (first quest)
             questIndex = 0;
@@ -60,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void nextQuest()
     {
         //If there are still quests, update the current quest and inform the quest triggers
-        if(quests[questIndex] != "End")
+        if(quests[questIndex] != "SerialsInside")
         {
             questIndex++;
             OnChangeQuestEvent?.Invoke(quests[questIndex]);
