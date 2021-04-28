@@ -3,7 +3,42 @@ guid: 3f17aa887de03b547ac36e2938e2a4ca
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dcs1st_text
+    second: {fileID: 2100000, guid: d2cdd55507227944382d95dab1de937e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor
+    second: {fileID: 2100000, guid: 56ef8d34118f74b489342cfbfd0030e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: labels
+    second: {fileID: 2100000, guid: 2efbcd3e15411324cb4278025ab1845e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: railings
+    second: {fileID: 2100000, guid: 104fbcb527fa696408c227d470556206, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stairs
+    second: {fileID: 2100000, guid: a98de7058f5219043be51a8c43430342, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile00
+    second: {fileID: 2100000, guid: b3d2d0ddd475ac042bc820db4533aeef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tile02
+    second: {fileID: 2100000, guid: b0485890cdace6d47baa3abdda2f808a, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
