@@ -18,10 +18,15 @@ public class MouseLook : MonoBehaviour
     {
         //get reference to the popup message
         var popup = FindObjectOfType<PopupHandler>();
-        if(popup)
+        var bulletinPopup = FindObjectOfType<BulletinPopup>();
+        if (popup)
         {
             // add event listener
             popup.OnPopupChange += OnPopupAction;
+        }
+        if (bulletinPopup)
+        {
+            bulletinPopup.OnPopupChange += OnPopupAction;
         }
     }
 

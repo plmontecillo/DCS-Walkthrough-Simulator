@@ -53,6 +53,7 @@ public class ChangeScene : MonoBehaviour
             //if "E" is pressed
             if(Input.GetButton("Use"))
             {
+                Debug.Log("change scene button is pressed");
                 //If Game Manager is already initialized
                 if(GameManager.Instance != null)
                 {

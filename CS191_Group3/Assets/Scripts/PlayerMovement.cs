@@ -40,9 +40,14 @@ public class PlayerMovement : MonoBehaviour
         currentScene = SceneManager.GetActiveScene().name;
 
         var popup = FindObjectOfType<PopupHandler>();
+        var bulletinPopup = FindObjectOfType<BulletinPopup>();
         if (popup)
         {
             popup.OnPopupChange += OnPopupAction;
+        }
+        if (bulletinPopup)
+        {
+            bulletinPopup.OnPopupChange += OnPopupAction;
         }
     }
 
