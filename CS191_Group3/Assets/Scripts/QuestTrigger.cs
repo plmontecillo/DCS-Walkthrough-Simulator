@@ -63,12 +63,14 @@ public class QuestTrigger : MonoBehaviour
     {
         if (_popup)
         {
-            if (quests[index] == questName)
+            if (other.gameObject.tag == "Player")
             {
-                _popup.Show(questText);
-                GameManager.Instance.nextQuest();
+                if (quests[index] == questName)
+                {
+                    _popup.Show(questText);
+                    GameManager.Instance.nextQuest();
+                }
             }
-
         }
     }
 
