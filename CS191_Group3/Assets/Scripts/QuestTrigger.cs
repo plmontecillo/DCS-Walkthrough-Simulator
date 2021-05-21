@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class QuestTrigger : MonoBehaviour
 {
-    //Mesh variables
-    [SerializeField]
-    private Color color = Color.yellow;
-
+    //Quest indicator model
+    public GameObject model;
+    private Animator animator;
+    private Renderer rend;
+    
     //Popup Variables
     public string questName;
     public string questText;
 
-    //Get Renderer (MESH) and Popup Handler (use _ since renderer is a reserved keyword)
-    private Renderer _renderer;
+    //Get the Popup Handler
     private PopupHandler _popup;
 
     //Quest Variables
@@ -24,8 +24,9 @@ public class QuestTrigger : MonoBehaviour
 
     private void Awake()
     {
-        //Get the mesh object and and the popup
-        _renderer = GetComponentInParent<Renderer>();
+        //Get the mesh object, animator, and the popup
+        animator = model.GetComponent<Animator>();
+        rend = model.GetComponentInChildren<Renderer>();
         _popup = FindObjectOfType<PopupHandler>();
 
         //Add event to the delegate when a the current quest is updated
@@ -72,17 +73,18 @@ public class QuestTrigger : MonoBehaviour
         }
     }
 
-    //This method sets the color of the quest collider to yellow if it is active
+    //This method shows the mesh
     private void Activate()
     {
-        if (_renderer)
-            _renderer.material.color = color;
+        if (rend) {
+            rend.enabled = true;
+        }
     }
 
-    //This method sets the color of the quest collider to yellow if it is inactive
+    //This method hides the mesh
     private void DeActivate()
     {
-        _renderer.material.color = Color.white;
+        rend.enabled = false;
     }
 
 

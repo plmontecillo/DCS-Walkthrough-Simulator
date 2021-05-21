@@ -2,17 +2,15 @@
 using UnityEngine.UI;
 public class BulletinTrigger : MonoBehaviour
 {
-
-    //Mesh variables
-    [SerializeField]
-    private Color color = Color.yellow;
+    //Animation
+    private Animator animator;
+    public GameObject bboard; // animated model
 
     //Popup Variables
     public string title;
     public string desc;
 
-    //Get Renderer (MESH) and Popup Handler (use _ since renderer is a reserved keyword)
-    private Renderer _renderer;
+    //Get Popup Handler (use _ since renderer is a reserved keyword)
     private BulletinPopup _popup;
 
     //showText
@@ -22,7 +20,6 @@ public class BulletinTrigger : MonoBehaviour
     private void Awake()
     {
         //Get the mesh object and and the popup
-        _renderer = GetComponentInParent<Renderer>();
         _popup = FindObjectOfType<BulletinPopup>();
         showText = textObject.GetComponent<Text>();
 
@@ -37,27 +34,30 @@ public class BulletinTrigger : MonoBehaviour
         {
             if (other.gameObject.tag == "Crosshair")
             {   
-                //change color
-                _renderer.material.color = color;
 
                 textObject.SetActive(true);
                 showText.text = "Press E to show information.";
 
                 if (Input.GetButton("Use"))
                 {
+                    animator.SetTrigger("Interact"); // play animation when interacted with
                     Debug.Log("E is pressed");
                     _popup.Show(title, desc);
+
                 }
             }
         }
+    }
+
+    private void Start()
+    {
+        animator = bboard.GetComponent<Animator>(); // assign bboard Animator component to a variable
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Crosshair")
         {
-            _renderer.material.color = Color.white;
-
             //return default string
             showText.text = "Press E to Enter";
             textObject.SetActive(false);
