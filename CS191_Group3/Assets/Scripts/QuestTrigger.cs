@@ -52,7 +52,10 @@ public class QuestTrigger : MonoBehaviour
             //need to update the index for the OnTriggerEnter method
             index = GameManager.Instance.questIndex;
             if (quest == questName)
+            {
                 Activate();
+                
+            }
             else
                 DeActivate();
         }
@@ -69,6 +72,8 @@ public class QuestTrigger : MonoBehaviour
                 if (quests[index] == questName)
                 {
                     _popup.Show(questText);
+                    //update the task canvas
+                    GameManager.Instance.changeCurrentTask(questText);
                     GameManager.Instance.nextQuest();
                 }
             }

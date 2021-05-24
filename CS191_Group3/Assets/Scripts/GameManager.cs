@@ -18,7 +18,12 @@ public class GameManager : MonoBehaviour
     //delagate-event for quests
     public delegate void ChangeQuestEvent(string questName);
     public event ChangeQuestEvent OnChangeQuestEvent;
-    
+
+    //Current Task Canvas
+    public string currentTask = ""; 
+    public delegate void ChangeTaskCanvas(string questName);
+    public event ChangeTaskCanvas OnTaskCanvasChange;
+
     //Array of quests
     public string[] quests;
     //Index of quest
@@ -72,5 +77,11 @@ public class GameManager : MonoBehaviour
             questIndex++;
             OnChangeQuestEvent?.Invoke(quests[questIndex]);
         }
+    }
+
+    //change the current task in the canvas
+    public void changeCurrentTask(string newTask)
+    {
+        OnTaskCanvasChange?.Invoke(newTask);
     }
 }
