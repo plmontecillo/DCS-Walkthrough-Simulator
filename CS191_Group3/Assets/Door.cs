@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
             showText.text = "Press E to open or close.";
 
             //if "E" is pressed, activate animation to open/close the door.
-            if (Input.GetButton("Use"))
+            if (Input.GetButtonDown("Use"))
             {
                 anim.SetTrigger("Interact");
             }

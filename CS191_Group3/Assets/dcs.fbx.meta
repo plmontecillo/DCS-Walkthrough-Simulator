@@ -3,7 +3,32 @@ guid: 9a5d26665884b4643ba5de4362b64024
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bricks
+    second: {fileID: 2100000, guid: 26ccc7aa9adfcef43b2e0bf35726684f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dcs_outside
+    second: {fileID: 2100000, guid: 8a582d6c71e11044a95168ed45e09cc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: railings
+    second: {fileID: 2100000, guid: 8105fcf5b8521a841ba201e043dd2be1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stairs
+    second: {fileID: 2100000, guid: a98de7058f5219043be51a8c43430342, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window
+    second: {fileID: 2100000, guid: 61f76f327e489044b9165511f0cbfa83, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
