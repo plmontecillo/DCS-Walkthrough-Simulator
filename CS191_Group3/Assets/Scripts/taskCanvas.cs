@@ -14,6 +14,11 @@ public class taskCanvas : MonoBehaviour
         GameManager.Instance.OnTaskCanvasChange += changeCurrentTask;
     }
 
+    public void Start()
+    {
+        currentTask.text = GameManager.Instance.currentTask;
+    }
+
     //update the current task
     public void changeCurrentTask(string newTask)
     {

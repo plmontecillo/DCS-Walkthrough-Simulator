@@ -83,5 +83,6 @@ public class GameManager : MonoBehaviour
     public void changeCurrentTask(string newTask)
     {
         OnTaskCanvasChange?.Invoke(newTask);
+        currentTask = newTask;
     }
 }
