@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/DCS_Inside.unity
+- path: Assets/Scenes/DCS_Outside.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
