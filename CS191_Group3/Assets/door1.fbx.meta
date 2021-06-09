@@ -53,7 +53,7 @@ ModelImporter:
       takeName: Cube|CubeAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 0
+      lastFrame: 4
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -140,7 +140,7 @@ ModelImporter:
       takeName: Cube|CubeAction
       internalID: 0
       firstFrame: 21
-      lastFrame: 21
+      lastFrame: 25
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
