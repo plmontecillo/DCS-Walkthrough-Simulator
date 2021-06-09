@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a2b9c49b3966b534d8aae0d743e643b2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FS Elliot Pro
+  fontNames:
+  - FS Elliot Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 002de7e0b0dc19547884bbae4a61c6d5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
