@@ -6,6 +6,7 @@
 
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     //make accessible to other scripts
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     public string currentTask = ""; 
     public delegate void ChangeTaskCanvas(string questName);
     public event ChangeTaskCanvas OnTaskCanvasChange;
+    
 
     //Array of quests
     public string[] quests;
@@ -79,10 +81,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+   
     //change the current task in the canvas
     public void changeCurrentTask(string newTask)
     {
         OnTaskCanvasChange?.Invoke(newTask);
         currentTask = newTask;
+
+
     }
 }

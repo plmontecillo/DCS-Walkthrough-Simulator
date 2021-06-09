@@ -3,9 +3,12 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class taskCanvas : MonoBehaviour
 {
+
+    public ContentSizeFitter _contentFitter;
     public Text currentTask;
 
     public void Awake()
@@ -19,12 +22,22 @@ public class taskCanvas : MonoBehaviour
         currentTask.text = GameManager.Instance.currentTask;
     }
 
+    public IEnumerator RefreshContentFitter()
+    {
+        _contentFitter.enabled = false;
+        yield return null;
+        _contentFitter.enabled = true;
+    }
+
+
     //update the current task
     public void changeCurrentTask(string newTask)
     {
         if (currentTask != null)
         {
             currentTask.text = newTask;
+            StartCoroutine(RefreshContentFitter());
+            
         }
         
     }

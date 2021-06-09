@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 public class BulletinTrigger : MonoBehaviour
 {
     //Animation
@@ -17,6 +18,8 @@ public class BulletinTrigger : MonoBehaviour
     public Text showText;
     public GameObject textObject;
 
+    public ContentSizeFitter _contentFitter;
+
     private void Awake()
     {
         //Get the mesh object and and the popup
@@ -29,7 +32,6 @@ public class BulletinTrigger : MonoBehaviour
     //If yes, check if the quest is active. Show popup message and update quest if so.
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("bulletin board triggered");
         if (_popup)
         {
             if (other.gameObject.tag == "Crosshair")
@@ -37,13 +39,13 @@ public class BulletinTrigger : MonoBehaviour
 
                 textObject.SetActive(true);
                 showText.text = "Press E to show information.";
+                _contentFitter.enabled = true;
 
                 if (Input.GetButton("Use"))
                 {
                     animator.SetTrigger("Interact"); // play animation when interacted with
                     Debug.Log("E is pressed");
                     _popup.Show(title, desc);
-
                 }
             }
         }
@@ -54,6 +56,13 @@ public class BulletinTrigger : MonoBehaviour
         animator = bboard.GetComponent<Animator>(); // assign bboard Animator component to a variable
     }
 
+    public IEnumerator RefreshContentFitter()
+    {
+        _contentFitter.enabled = !_contentFitter.enabled;
+        yield return null;
+        _contentFitter.enabled = !_contentFitter.enabled;
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Crosshair")
@@ -61,6 +70,8 @@ public class BulletinTrigger : MonoBehaviour
             //return default string
             showText.text = "Press E to Enter";
             textObject.SetActive(false);
+            _contentFitter.enabled = false;
+            StartCoroutine(RefreshContentFitter());
         }
     }
 

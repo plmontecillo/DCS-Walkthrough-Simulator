@@ -3,6 +3,9 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using UnityEngine.UI;
+
 
 public class ChangeScene : MonoBehaviour
 {
@@ -15,8 +18,11 @@ public class ChangeScene : MonoBehaviour
 
     private bool isPopupActive;
 
+    public ContentSizeFitter _contentFitter;
+
     void Awake()
     {
+        enterText.SetActive(false);
         //get the name of the current scene
         currentScene = SceneManager.GetActiveScene().name;
 
@@ -50,8 +56,13 @@ public class ChangeScene : MonoBehaviour
         {
             //show 2D text
             enterText.SetActive(true);
+            _contentFitter.enabled = true;
+            StartCoroutine(RefreshContentFitter());
+
+
+
             //if "E" is pressed
-            if(Input.GetButton("Use"))
+            if (Input.GetButton("Use"))
             {
                 Debug.Log("change scene button is pressed");
                 //If Game Manager is already initialized
@@ -75,7 +86,16 @@ public class ChangeScene : MonoBehaviour
         {
             //hide 2D text
             enterText.SetActive(false);
+            _contentFitter.enabled = false;
+            StartCoroutine(RefreshContentFitter());
         }
+    }
+
+    public IEnumerator RefreshContentFitter()
+    {
+        _contentFitter.enabled = !_contentFitter.enabled;
+        yield return null;
+        _contentFitter.enabled = !_contentFitter.enabled;
     }
 
 }
