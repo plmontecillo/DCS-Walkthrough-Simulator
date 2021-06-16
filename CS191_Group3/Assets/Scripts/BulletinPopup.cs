@@ -30,6 +30,7 @@ public class BulletinPopup : MonoBehaviour
         this.desc.text = desc;
         transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         GameManager.Instance.isPopupActive = true;
     }
 
@@ -41,6 +42,7 @@ public class BulletinPopup : MonoBehaviour
         transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.OutCubic);
         Cursor.lockState = CursorLockMode.Locked;
         GameManager.Instance.isPopupActive = false;
+        Cursor.visible = false;
     }
 }
 

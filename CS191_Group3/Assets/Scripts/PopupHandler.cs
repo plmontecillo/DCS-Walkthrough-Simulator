@@ -33,6 +33,7 @@ public class PopupHandler : MonoBehaviour
         transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         Cursor.lockState = CursorLockMode.None;
         GameManager.Instance.isPopupActive = true;
+        Cursor.visible = true;
     }
 
     //This method is used to hide the popup message
@@ -43,5 +44,6 @@ public class PopupHandler : MonoBehaviour
         transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.OutCubic);
         Cursor.lockState = CursorLockMode.Locked;
         GameManager.Instance.isPopupActive = false;
+        Cursor.visible = false;
     }
 }
